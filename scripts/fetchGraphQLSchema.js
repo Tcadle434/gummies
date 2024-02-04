@@ -8,11 +8,6 @@ const { fetch } = require("cross-undici-fetch");
 
 const { buildClientSchema, getIntrospectionQuery, printSchema } = require("graphql");
 
-console.log("🔦  Fetching GraphQL Schema...");
-console.log("environment variables:");
-console.log(process.env.NEXT_PUBLIC_SUPABASE_URL);
-console.log(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
-
 const supagradient = gradient(["#00CB8A", "#78E0B8"]);
 
 function fetchGraphQLSchema(url, options) {
