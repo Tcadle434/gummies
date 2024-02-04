@@ -21,29 +21,31 @@ export function Navbar() {
 
 	return (
 		<>
-			<AuctionFeature />
-			<nav className="bg-foreground flex items-center justify-between px-4 py-1 border-border border-2">
-				<img className="h-14" alt="logo" src="/tmpLogo.png" />
-				<ul className="flex flex-1 justify-end items-center space-x-8 mr-8">
-					{pages.map(({ label, path }) => (
-						// Add a condition to check if the current path matches the link path
-						<li
-							key={path}
-							className={`hover:text-primary ${
-								pathname === path ? "text-primary font-semibold" : ""
-							}`}
-						>
-							<Link href={path}>{label}</Link>
-						</li>
-					))}
-				</ul>
-				<div className="flex items-center space-x-2">
-					{wallet.connected && wallet.publicKey && (
-						<AccountBalance address={wallet.publicKey} />
-					)}
-					<WalletButton />
-				</div>
-			</nav>
+			<div className="fixed top-0 z-10 w-full">
+				<AuctionFeature />
+				<nav className="bg-foreground flex items-center justify-between px-4 py-1 border-border border-2">
+					<img className="h-14" alt="logo" src="/tmpLogo.png" />
+					<ul className="flex flex-1 justify-end items-center space-x-8 mr-8">
+						{pages.map(({ label, path }) => (
+							// Add a condition to check if the current path matches the link path
+							<li
+								key={path}
+								className={`hover:text-primary ${
+									pathname === path ? "text-primary font-semibold" : ""
+								}`}
+							>
+								<Link href={path}>{label}</Link>
+							</li>
+						))}
+					</ul>
+					<div className="flex items-center space-x-2">
+						{wallet.connected && wallet.publicKey && (
+							<AccountBalance address={wallet.publicKey} />
+						)}
+						<WalletButton />
+					</div>
+				</nav>
+			</div>
 		</>
 	);
 }

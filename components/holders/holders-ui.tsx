@@ -24,16 +24,10 @@ export function DisplayHolders() {
 		);
 	}
 
-	// if (holdersQuery.isError) {
-	// 	return <div className="h-screen flex items-center justify-center">Error</div>;
-	// }
-
 	return (
 		<div>
-			{/* <pre>{JSON.stringify(holdersQuery.data, null, 2)}</pre> */}
-			{/* if public key is in the data, display holders page, else say you don't own a gummy */}
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
-				<div className="mt-8">
+				<div className="pt-64">
 					<h1 className="text-xl text-center">Welcome Gummies Holder!</h1>
 					<h2 className="text-md text-center">
 						here's a list of all the gummies holders as a placeholder for whatever we

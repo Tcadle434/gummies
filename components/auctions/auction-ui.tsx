@@ -9,7 +9,7 @@ export function DisplayAuction() {
 	const auctionLink = auctionData?.link;
 
 	return auctionData ? (
-		<nav className="bg-foreground flex items-center justify-center px-4 py-2 border-border border-t-2">
+		<nav className="bg-foreground flex items-center justify-center px-4 py-3 border-border border-t-2">
 			<div className="flex flex-row items-center text-sm">
 				<span className="bg-primary text-background px-2 py-0.5 rounded-sm font-bold text-xs mx-2">
 					New
