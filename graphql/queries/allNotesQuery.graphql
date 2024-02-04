@@ -1,0 +1,14 @@
+# graphql/queries/allNotesQuery.graphql
+
+query AllNotes {
+	notesCollection {
+		__typename
+		edges {
+			node {
+				nodeId
+				id
+				title
+			}
+		}
+	}
+}
