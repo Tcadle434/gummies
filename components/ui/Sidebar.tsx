@@ -3,12 +3,7 @@
 import React from "react";
 import Link from "next/link";
 
-import {
-	HomeIcon,
-	UserGroupIcon,
-	LightBulbIcon,
-	RocketLaunchIcon,
-} from "@heroicons/react/24/solid";
+import { HomeIcon, UserGroupIcon, PhotoIcon, RocketLaunchIcon } from "@heroicons/react/24/solid";
 
 const pages = [
 	{ label: "Home", path: "/", icon: HomeIcon, iconClasses: "h-8 w-8 text-primary" },
@@ -19,9 +14,9 @@ const pages = [
 		iconClasses: "h-8 w-8 text-gumshoe",
 	},
 	{
-		label: "Insights",
-		path: "/insights",
-		icon: LightBulbIcon,
+		label: "Gallery",
+		path: "/gallery",
+		icon: PhotoIcon,
 		iconClasses: "h-8 w-8 text-skin",
 	},
 	{

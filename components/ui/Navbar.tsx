@@ -15,8 +15,8 @@ export function Navbar() {
 	const pages = [
 		{ label: "Home", path: "/" },
 		{ label: "Holders", path: "/holders" },
-		{ label: "Insights", path: "/clusters" },
-		{ label: "Investments", path: "/clusters" },
+		{ label: "Gallery", path: "/gallery" },
+		{ label: "Investments", path: "/investments" },
 	];
 
 	return (
