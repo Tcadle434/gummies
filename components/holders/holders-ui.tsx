@@ -27,7 +27,7 @@ export function DisplayHolders() {
 	return (
 		<div>
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
-				<div className="h-screen flex items-center justify-center">
+				<div className="h-screen flex items-center justify-centerg">
 					<h1 className="text-xl text-center">Welcome Gummies Holder!</h1>
 				</div>
 			) : (
