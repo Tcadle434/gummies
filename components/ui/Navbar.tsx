@@ -15,8 +15,8 @@ export function Navbar() {
 	const pages = [
 		{ label: "Home", path: "/" },
 		{ label: "Holders", path: "/holders" },
-		{ label: "Page 3", path: "/clusters" },
-		{ label: "Page 4", path: "/clusters" },
+		{ label: "Insights", path: "/clusters" },
+		{ label: "Investments", path: "/clusters" },
 	];
 
 	return (
@@ -24,12 +24,11 @@ export function Navbar() {
 			<div className="fixed top-0 z-10 w-full">
 				<AuctionFeature />
 				<nav className="bg-foreground flex items-center justify-between px-4 py-1 border-border border-2">
-					<img className="h-14" alt="logo" src="/tmpLogo.png" />
+					<img className="h-14" alt="logo" src="/gummies-logo.png" />
 					<ul className="flex flex-1 justify-end items-center space-x-8 mr-8">
 						{pages.map(({ label, path }) => (
-							// Add a condition to check if the current path matches the link path
 							<li
-								key={path}
+								key={label}
 								className={`hover:text-primary ${
 									pathname === path ? "text-primary font-semibold" : ""
 								}`}

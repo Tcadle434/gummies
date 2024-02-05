@@ -10,8 +10,9 @@ module.exports = {
 				primary: "#54839b",
 				border: "#27272a",
 				punk: "#54839b",
-				noun: "#CC9694",
+				noun: "#A8313D",
 				skin: "#FDE6CB",
+				gumshoe: "#3C5F57",
 				btn: {
 					background: "hsl(var(--btn-background))",
 					"background-hover": "hsl(var(--btn-background-hover))",

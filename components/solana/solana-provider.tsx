@@ -11,13 +11,10 @@ import {
 	WalletProvider,
 } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
-import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
 import { ReactNode, useCallback, useMemo } from "react";
-import { toWalletAdapterNetwork, useCluster } from "../cluster/cluster-data-access";
+import { useCluster } from "../cluster/cluster-data-access";
 
-export const WalletButton = dynamic(async () => await import("./WalletButtonWrapper"), {
-	ssr: false,
-});
+export const WalletButton = dynamic(async () => await import("./WalletButtonWrapper"));
 
 export function SolanaProvider({ children }: { children: ReactNode }) {
 	const { cluster } = useCluster();
