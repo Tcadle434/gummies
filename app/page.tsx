@@ -20,8 +20,14 @@ export default function Index() {
 
 	return (
 		<>
-			<div className="flex justify-center items-center h-screen relative ml-14">
+			<div className="flex justify-center items-center h-screen relative ml-14 flex-col">
 				<h1 className="text-skin font-pixelify-sans md:text-9xl text-6xl">{text}</h1>
+				<p
+					className="text-skin font-mono md:text-lg text-sm mt-4 opacity-0 animate-fadeIn"
+					style={{ animationDelay: "1.7s" }}
+				>
+					Private Members Collective.
+				</p>
 			</div>
 			<div className="absolute bottom-0 right-0 flex flex-row">
 				{images.map((image, index) => (

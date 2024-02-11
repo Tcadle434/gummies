@@ -10,6 +10,16 @@ interface Gummy {
 	imageUrl: string;
 }
 
+export const marketplaces = [
+	{
+		src: "/exchange_art.jpeg",
+		alt: "Exchange Art",
+		url: "https://exchange.art/series/GUMMIES/nfts",
+	},
+	{ src: "/magic_eden.webp", alt: "Magic Eden", url: "https://magiceden.io/marketplace/gummies" },
+	{ src: "/tensor.jpeg", alt: "Tensor", url: "https://www.tensor.trade/trade/gummies" },
+];
+
 export function DisplayGallery() {
 	const { gummiesGalaryQuery } = useGummiesGalary();
 	console.log(gummiesGalaryQuery.data);
@@ -28,7 +38,27 @@ export function DisplayGallery() {
 
 	return (
 		<div>
-			<h1 className="text-3xl font-semibold mb-4 pt-48 text-center">Gummies Gallery</h1>
+			<h1 className="text-3xl font-semibold pt-48 text-center font-pixelify-sans items-center">
+				Meet the Gummies
+			</h1>
+			<div className="flex justify-center mb-4">
+				<div className="flex flex-row mx-2">
+					{marketplaces.map((marketplace, index) => (
+						<div key={index}>
+							<a
+								href={marketplace.url}
+								className="block p-1 rounded-full border-2 border-transparent hover:border-white transition-all duration-500"
+							>
+								<img
+									src={marketplace.src}
+									alt={marketplace.alt}
+									className="rounded-full transition-opacity w-10 hover:opacity-75"
+								/>
+							</a>
+						</div>
+					))}
+				</div>
+			</div>
 			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 				{gummiesGalaryQuery.data?.map((gummy: Gummy, index: number) => (
 					<GummyGalleryCard key={index} name={gummy.name} imageUrl={gummy.imageUrl} />
