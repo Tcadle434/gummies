@@ -25,7 +25,7 @@ export function Navbar() {
 				<AuctionFeature />
 				<nav className="bg-foreground flex items-center justify-between px-4 py-1 border-border border-2">
 					<img className="h-14" alt="logo" src="/gummies-logo.png" />
-					<ul className="flex flex-1 justify-end items-center space-x-8 mr-8">
+					<ul className="flex flex-1 justify-end items-center space-x-8 mr-8 text-skin">
 						{pages.map(({ label, path }) => (
 							<li
 								key={label}

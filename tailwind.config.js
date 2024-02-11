@@ -7,7 +7,7 @@ module.exports = {
 				background: "#0f0f0f",
 				foreground: "#141414",
 				mutedForeground: "#a8a8a8",
-				primary: "#54839b",
+				primary: "#772B37",
 				border: "#27272a",
 				punk: "#54839b",
 				noun: "#A8313D",
@@ -16,6 +16,29 @@ module.exports = {
 				btn: {
 					background: "hsl(var(--btn-background))",
 					"background-hover": "hsl(var(--btn-background-hover))",
+				},
+			},
+			fontFamily: {
+				"pixelify-sans": ["Pixelify Sans", "sans-serif"],
+			},
+			animation: {
+				text: "text 5s ease infinite",
+				fadeIn: "fadeIn 0.5s ease-in-out forwards", // Define the animation name, duration, timing function, and fill mode
+			},
+			keyframes: {
+				fadeIn: {
+					"0%": { opacity: 0 },
+					"100%": { opacity: 1 },
+				},
+				text: {
+					"0%, 100%": {
+						"background-size": "200% 200%",
+						"background-position": "left center",
+					},
+					"50%": {
+						"background-size": "200% 200%",
+						"background-position": "right center",
+					},
 				},
 			},
 		},
