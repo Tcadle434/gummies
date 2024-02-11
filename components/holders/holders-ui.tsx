@@ -11,7 +11,7 @@ export function DisplayHolders() {
 
 	if (!publicKey) {
 		return (
-			<div className="h-screen flex items-center justify-center font-mono">
+			<div className="h-screen flex items-center justify-center font-mono ml-14">
 				Please connect your wallet.
 			</div>
 		);
@@ -26,7 +26,7 @@ export function DisplayHolders() {
 	}
 
 	return (
-		<div className="font-mono">
+		<div className="font-mono ml-14">
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
 				<div className="h-screen flex items-center justify-center flex-col">
 					<h1 className="text-xl text-center">
