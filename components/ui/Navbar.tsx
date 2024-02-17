@@ -27,7 +27,7 @@ export function Navbar() {
 					<Link href="/">
 						<img className="h-14" alt="logo" src="/gummies-logo.png" />
 					</Link>
-					<ul className="flex flex-1 justify-end items-center space-x-8 mr-8 text-skin font-mono">
+					<ul className="flex flex-1 justify-end items-center space-x-8 mr-8 text-white font-mono">
 						{pages.map(({ label, path }) => (
 							<li
 								key={label}

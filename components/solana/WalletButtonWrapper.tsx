@@ -6,8 +6,8 @@ const WalletButtonWrapper = (props: any) => {
 	return (
 		<WalletMultiButton
 			style={{
-				backgroundColor: "#772B37",
-				color: "#FDE6CB",
+				backgroundColor: "#7B2937",
+				color: "#FFFFFF",
 				borderRadius: "4px",
 				padding: "8px 16px",
 				cursor: "pointer",

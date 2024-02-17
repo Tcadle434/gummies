@@ -7,7 +7,7 @@ module.exports = {
 				background: "#0f0f0f",
 				foreground: "#141414",
 				mutedForeground: "#a8a8a8",
-				primary: "#772B37",
+				primary: "#7B2937",
 				border: "#27272a",
 				punk: "#54839b",
 				noun: "#A8313D",
