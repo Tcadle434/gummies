@@ -29,7 +29,7 @@ const pages = [
 
 export function Sidebar() {
 	return (
-		<div className="fixed top-1/2 left-0 -translate-y-1/2 flex flex-col items-center space-y-2 z-10 sidebar">
+		<div className="fixed top-1/2 left-0 -translate-y-1/2 md:flex flex-col items-center space-y-2 z-10 sidebar hidden">
 			<ul>
 				{pages.map(({ label, path, icon, iconClasses }) => (
 					<li
