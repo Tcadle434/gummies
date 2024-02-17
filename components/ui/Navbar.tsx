@@ -30,12 +30,12 @@ export function Navbar() {
 							<p className="text-white font-blinker font-bold text-2xl">GUMMIES</p>
 						</Link>
 						<div className="flex-1 flex justify-center">
-							<ul className="flex justify-center items-center space-x-8 text-white font-mono">
+							<ul className="flex justify-center items-center space-x-8 text-white font-blinker font-semibold text-lg">
 								{pages.map(({ label, path }) => (
 									<li
 										key={label}
 										className={`hover:text-primary ${
-											pathname === path ? "text-primary font-semibold" : ""
+											pathname === path ? "text-primary font-bold" : ""
 										}`}
 									>
 										<Link href={path}>{label}</Link>

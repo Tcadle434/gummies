@@ -26,7 +26,7 @@ export function DisplayGallery() {
 
 	if (gummiesGalaryQuery.isLoading) {
 		return (
-			<div className="h-screen flex items-center justify-center ml-14">
+			<div className="h-screen flex items-center justify-center">
 				<Loader />
 			</div>
 		);
@@ -37,7 +37,7 @@ export function DisplayGallery() {
 	}
 
 	return (
-		<div className="ml-14">
+		<div className="">
 			<h1 className="text-3xl font-semibold pt-48 text-center font-pixelify-sans items-center">
 				Meet the Gummies
 			</h1>

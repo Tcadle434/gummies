@@ -11,7 +11,7 @@ export function DisplayHolders() {
 
 	if (!publicKey) {
 		return (
-			<div className="h-screen flex items-center justify-center font-mono ml-14">
+			<div className="h-screen flex items-center justify-center font-mono">
 				Please connect your wallet.
 			</div>
 		);
