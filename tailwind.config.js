@@ -20,6 +20,7 @@ module.exports = {
 			},
 			fontFamily: {
 				"pixelify-sans": ["Pixelify Sans", "sans-serif"],
+				blinker: ["Blinker", "sans-serif"],
 			},
 			animation: {
 				text: "text 5s ease infinite",

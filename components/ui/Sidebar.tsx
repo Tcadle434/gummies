@@ -6,24 +6,24 @@ import Link from "next/link";
 import { HomeIcon, UserGroupIcon, PhotoIcon, RocketLaunchIcon } from "@heroicons/react/24/solid";
 
 const pages = [
-	{ label: "Home", path: "/", icon: HomeIcon, iconClasses: "h-8 w-8 text-punk" },
+	{ label: "Home", path: "/", icon: HomeIcon, iconClasses: "h-5 w-5 text-primary" },
 	{
 		label: "Holders",
 		path: "/holders",
 		icon: UserGroupIcon,
-		iconClasses: "h-8 w-8 text-gumshoe",
+		iconClasses: "h-5 w-5 text-primary",
 	},
 	{
 		label: "Gallery",
 		path: "/gallery",
 		icon: PhotoIcon,
-		iconClasses: "h-8 w-8 text-skin",
+		iconClasses: "h-5 w-5 text-primary",
 	},
 	{
 		label: "Investments",
 		path: "/investments",
 		icon: RocketLaunchIcon,
-		iconClasses: "h-8 w-8 text-noun",
+		iconClasses: "h-5 w-5 text-primary",
 	},
 ];
 
@@ -34,7 +34,7 @@ export function Sidebar() {
 				{pages.map(({ label, path, icon, iconClasses }) => (
 					<li
 						key={label}
-						className="w-14 h-14 m-2 bg-foreground hover:bg-primaryHover text-white flex items-center justify-center rounded-md shadow-lg transition duration-150 ease-in-out border-border border-2"
+						className="w-12 h-12 m-2 bg-foreground hover:bg-primaryHover text-white flex items-center justify-center rounded-md shadow-lg transition duration-150 ease-in-out border-border border-2"
 					>
 						<Link href={path} key={path}>
 							{React.createElement(icon, { className: iconClasses })}
