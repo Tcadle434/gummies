@@ -1,7 +1,11 @@
 "use client";
 
-import { DisplayBlog } from "./blog-ui";
+import { DisplayBlogCard, DisplayBlogDetails } from "./blog-ui";
 
 export function BlogFeature() {
-	return <DisplayBlog />;
+	return <DisplayBlogCard />;
+}
+
+export function BlogDetailsFeature() {
+	return <DisplayBlogDetails />;
 }

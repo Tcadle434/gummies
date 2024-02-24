@@ -4,6 +4,7 @@ query AllBlogs {
 	blogCollection {
 		edges {
 			node {
+				id
 				title
 				subtitle
 				publishDate

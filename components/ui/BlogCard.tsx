@@ -1,9 +1,18 @@
 import React from "react";
 import { Blog } from "@/gql/graphql";
+import { useRouter } from "next/navigation";
 
-export function BlogCard({ title, subtitle, publishDate, content }: Blog) {
+export function BlogCard({ title, id, subtitle, publishDate, content }: Blog) {
+	const router = useRouter();
+
+	const handleClick = () => {
+		router.push(`/blog/${id}`);
+	};
 	return (
-		<div className="hover:scale-105 transform duration-500">
+		<button
+			className="hover:scale-105 transform duration-500 cursor pointer"
+			onClick={handleClick}
+		>
 			<div
 				className={`bg-foreground p-4 rounded-md border-border border-2 transform cursor-pointer transition-opacity duration-500 ease-in-out`}
 			>
@@ -15,6 +24,6 @@ export function BlogCard({ title, subtitle, publishDate, content }: Blog) {
 					{publishDate}
 				</div>
 			</div>
-		</div>
+		</button>
 	);
 }
