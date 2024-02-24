@@ -1,18 +1,18 @@
 "use client";
 
-import { useHolders } from "./holders-data-access";
+import { useHolders } from "../blog/holders-data-access";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { marketplaces } from "../gallery/gallery-ui";
 import Loader from "../ui/Loader";
 
-export function DisplayHolders() {
+export function DisplayAnalysis() {
 	const { publicKey } = useWallet();
 	const { holdersQuery } = useHolders();
 
 	if (!publicKey) {
 		return (
-			<div className="h-screen flex items-center justify-center font-mono">
-				Please connect your wallet.
+			<div className="h-screen flex items-center justify-center font-mono px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+				Analysis is only available to Gummies holders. Please connect your wallet!
 			</div>
 		);
 	}
@@ -32,7 +32,7 @@ export function DisplayHolders() {
 					<h1 className="text-xl text-center">
 						Welcome Gummies Holder!
 						<br />
-						We'll put cool shit here.
+						Analysis here.
 					</h1>
 				</div>
 			) : (

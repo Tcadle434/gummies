@@ -4,32 +4,10 @@ import { usePathname } from "next/navigation";
 import { WalletButton } from "../solana/solana-provider";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { HomeIcon, UserGroupIcon, PhotoIcon, RocketLaunchIcon } from "@heroicons/react/24/solid";
+import { navPages } from "./pages";
 
 export function Navbar() {
 	const pathname = usePathname();
-
-	const pages = [
-		{ label: "Home", path: "/", icon: HomeIcon, iconClasses: "h-5 w-5 text-primary" },
-		{
-			label: "Holders",
-			path: "/holders",
-			icon: UserGroupIcon,
-			iconClasses: "h-5 w-5 text-primary",
-		},
-		{
-			label: "Gallery",
-			path: "/gallery",
-			icon: PhotoIcon,
-			iconClasses: "h-5 w-5 text-primary",
-		},
-		{
-			label: "Investments",
-			path: "/investments",
-			icon: RocketLaunchIcon,
-			iconClasses: "h-5 w-5 text-primary",
-		},
-	];
 
 	return (
 		<Disclosure
@@ -61,7 +39,7 @@ export function Navbar() {
 							</div>
 							<div className="hidden md:block">
 								<ul className="flex items-center justify-center flex-1 space-x-4 md:space-x-8 list-none">
-									{pages.map(({ label, path }) => (
+									{navPages.map(({ label, path }) => (
 										<li
 											key={label}
 											className={`hover:text-primary ${
@@ -81,7 +59,7 @@ export function Navbar() {
 
 					<Disclosure.Panel className="md:hidden">
 						<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-							{pages.map(({ label, path, icon, iconClasses }) => (
+							{navPages.map(({ label, path, icon, iconClasses }) => (
 								<Disclosure.Button
 									key={label}
 									as="a"

@@ -1,0 +1,14 @@
+# graphql/queries/allBlogsQuery.graphql
+
+query AllBlogs {
+	blogCollection {
+		edges {
+			node {
+				title
+				subtitle
+				publishDate
+				content
+			}
+		}
+	}
+}
