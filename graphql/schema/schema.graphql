@@ -465,6 +465,7 @@ type blog implements Node {
   subtitle: String
   publishDate: Date
   content: String
+  cardImage: String
 }
 
 type blogConnection {
@@ -491,6 +492,7 @@ input blogFilter {
   subtitle: StringFilter
   publishDate: DateFilter
   content: StringFilter
+  cardImage: StringFilter
   nodeId: IDFilter
 
   """
@@ -512,6 +514,7 @@ input blogInsertInput {
   subtitle: String
   publishDate: Date
   content: String
+  cardImage: String
 }
 
 type blogInsertResponse {
@@ -528,6 +531,7 @@ input blogOrderBy {
   subtitle: OrderByDirection
   publishDate: OrderByDirection
   content: OrderByDirection
+  cardImage: OrderByDirection
 }
 
 input blogUpdateInput {
@@ -535,6 +539,7 @@ input blogUpdateInput {
   subtitle: String
   publishDate: Date
   content: String
+  cardImage: String
 }
 
 type blogUpdateResponse {

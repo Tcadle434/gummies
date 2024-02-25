@@ -9,6 +9,7 @@ query AllBlogs {
 				subtitle
 				publishDate
 				content
+				cardImage
 			}
 		}
 	}

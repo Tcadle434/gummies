@@ -38,27 +38,23 @@ export function DisplayBlogCard() {
 	}
 
 	return (
-		<div className="font-mono ml-14">
+		<div className="font-mono mt-20">
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
-				<div className="h-screen flex items-center justify-center flex-col">
-					<h1 className="text-xl text-center">
-						Welcome Gummies Holder!
-						<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-20">
-							{/* map through blogsTanstackQuery.data.blogCollection.edges and for each inner node object make a blog card in a grid object */}
-							{blogsTanstackQuery.data?.blogCollection!.edges.map(
-								({ node }: { node: Blog }, index: number) => (
-									<BlogCard
-										key={index}
-										id={node.id}
-										title={node.title}
-										subtitle={node.subtitle ?? ""} // Use '??' to provide a fallback for potentially null/undefined values
-										publishDate={node.publishDate ?? ""} // Handle potentially null/undefined publishDate
-										content={node.content ?? ""}
-									/>
-								)
-							)}
-						</div>
-					</h1>
+				<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-20">
+					{/* map through blogsTanstackQuery.data.blogCollection.edges and for each inner node object make a blog card in a grid object */}
+					{blogsTanstackQuery.data?.blogCollection!.edges.map(
+						({ node }: { node: Blog }, index: number) => (
+							<BlogCard
+								key={index}
+								id={node.id}
+								title={node.title}
+								subtitle={node.subtitle ?? ""} // Use '??' to provide a fallback for potentially null/undefined values
+								publishDate={node.publishDate ?? ""} // Handle potentially null/undefined publishDate
+								content={node.content ?? ""}
+								cardImage={node.cardImage ?? ""}
+							/>
+						)
+					)}
 				</div>
 			) : (
 				<div className="h-screen flex items-center justify-center text-center flex-col">
@@ -118,7 +114,7 @@ export function DisplayBlogDetails({}) {
 		);
 	}
 	return (
-		<div className="font-mono ml-14 mt-20">
+		<div className="font-mono md:ml-14 mt-20 ml-4">
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
 				<div className="">
 					{/* map through blogsTanstackQuery.data.blogCollection.edges and for each inner node object make a blog card in a grid object */}

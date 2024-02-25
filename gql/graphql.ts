@@ -400,6 +400,7 @@ export type AuctionsUpdateResponse = {
 
 export type Blog = Node & {
 	__typename?: "blog";
+	cardImage?: Maybe<Scalars["String"]["output"]>;
 	content?: Maybe<Scalars["String"]["output"]>;
 	id?: Scalars["Int"]["output"];
 	/** Globally Unique Record Identifier */
@@ -432,6 +433,7 @@ export type BlogEdge = {
 export type BlogFilter = {
 	/** Returns true only if all its inner filters are true, otherwise returns false */
 	and?: InputMaybe<Array<BlogFilter>>;
+	cardImage?: InputMaybe<StringFilter>;
 	content?: InputMaybe<StringFilter>;
 	id?: InputMaybe<IntFilter>;
 	nodeId?: InputMaybe<IdFilter>;
@@ -445,6 +447,7 @@ export type BlogFilter = {
 };
 
 export type BlogInsertInput = {
+	cardImage?: InputMaybe<Scalars["String"]["input"]>;
 	content?: InputMaybe<Scalars["String"]["input"]>;
 	publishDate?: InputMaybe<Scalars["Date"]["input"]>;
 	subtitle?: InputMaybe<Scalars["String"]["input"]>;
@@ -460,6 +463,7 @@ export type BlogInsertResponse = {
 };
 
 export type BlogOrderBy = {
+	cardImage?: InputMaybe<OrderByDirection>;
 	content?: InputMaybe<OrderByDirection>;
 	id?: InputMaybe<OrderByDirection>;
 	publishDate?: InputMaybe<OrderByDirection>;
@@ -468,6 +472,7 @@ export type BlogOrderBy = {
 };
 
 export type BlogUpdateInput = {
+	cardImage?: InputMaybe<Scalars["String"]["input"]>;
 	content?: InputMaybe<Scalars["String"]["input"]>;
 	publishDate?: InputMaybe<Scalars["Date"]["input"]>;
 	subtitle?: InputMaybe<Scalars["String"]["input"]>;
@@ -579,6 +584,7 @@ export type AllBlogsQuery = {
 			__typename?: "blogEdge";
 			node: {
 				__typename?: "blog";
+				id: number;
 				title: string;
 				subtitle?: string | null;
 				publishDate?: any | null;
@@ -714,6 +720,10 @@ export const AllBlogsDocument = {
 												selectionSet: {
 													kind: "SelectionSet",
 													selections: [
+														{
+															kind: "Field",
+															name: { kind: "Name", value: "id" },
+														},
 														{
 															kind: "Field",
 															name: { kind: "Name", value: "title" },
