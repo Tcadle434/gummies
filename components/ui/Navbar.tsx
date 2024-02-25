@@ -27,7 +27,6 @@ export function Navbar() {
 								</Link>
 							</div>
 							<div className="-mr-2 flex md:hidden">
-								{/* Mobile menu button */}
 								<Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-primary">
 									<span className="sr-only">Open main menu</span>
 									{open ? (
