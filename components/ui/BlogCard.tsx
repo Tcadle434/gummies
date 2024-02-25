@@ -13,11 +13,11 @@ export function BlogCard({ title, id, subtitle, publishDate, content, cardImage 
 			<div
 				className={`bg-foreground p-4 rounded-md border-mutedForeground border-2 transform cursor-pointer transition-opacity duration-500 ease-in-out hover:border-primary`}
 			>
-				<div className={`text-left mt-2 font-mono text-white opacity-50`}>{title}</div>
-				<div className={`text-left mt-2 font-mono text-mutedForeground opacity-50`}>
+				<div className={`text-left mt-2 font-blinker text-white opacity-50`}>{title}</div>
+				<div className={`text-left mt-2 font-blinker text-mutedForeground opacity-50`}>
 					{subtitle}
 				</div>
-				<div className={`text-left mt-2 font-mono text-mutedForeground opacity-50`}>
+				<div className={`text-left mt-2 font-blinker text-mutedForeground opacity-50`}>
 					{publishDate}
 				</div>
 				<img

@@ -11,7 +11,7 @@ export function DisplayAnalysis() {
 
 	if (!publicKey) {
 		return (
-			<div className="h-screen flex items-center justify-center font-mono px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+			<div className="h-screen flex items-center justify-center font-blinker px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				Analysis is only available to Gummies holders. Please connect your wallet!
 			</div>
 		);
@@ -26,7 +26,7 @@ export function DisplayAnalysis() {
 	}
 
 	return (
-		<div className="font-mono ml-14">
+		<div className="font-blinker ml-14">
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
 				<div className="h-screen flex items-center justify-center flex-col">
 					<h1 className="text-xl text-center">

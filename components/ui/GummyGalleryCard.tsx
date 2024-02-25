@@ -46,7 +46,7 @@ export function GummyGalleryCard({ name, imageUrl }: GummyGalleryCardProps) {
 						onLoad={handleImageLoad}
 					/>
 					<div
-						className={`text-center mt-2 font-mono text-white opacity-50 ${
+						className={`text-center mt-2 font-blinker text-white opacity-50 ${
 							imageLoaded ? "" : "hidden"
 						}`}
 					>

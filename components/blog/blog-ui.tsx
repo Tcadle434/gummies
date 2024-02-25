@@ -15,7 +15,7 @@ export function DisplayBlogCard() {
 
 	if (!publicKey) {
 		return (
-			<div className="h-screen flex items-center justify-center font-mono px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+			<div className="h-screen flex items-center justify-center font-blinker px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				Articles are only available to Gummies holders. Please connect your wallet!
 			</div>
 		);
@@ -31,14 +31,14 @@ export function DisplayBlogCard() {
 
 	if (holdersQuery.isError || blogsTanstackQuery.isError) {
 		return (
-			<div className="h-screen flex items-center justify-center font-mono px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+			<div className="h-screen flex items-center justify-center font-blinker px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				There was an error fetching the data. Please try again later.
 			</div>
 		);
 	}
 
 	return (
-		<div className="font-mono mt-20">
+		<div className="font-blinker mt-20">
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-20">
 					{/* map through blogsTanstackQuery.data.blogCollection.edges and for each inner node object make a blog card in a grid object */}
@@ -92,7 +92,7 @@ export function DisplayBlogDetails({}) {
 
 	if (!publicKey) {
 		return (
-			<div className="h-screen flex items-center justify-center font-mono px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+			<div className="h-screen flex items-center justify-center font-blinker px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				Articles are only available to Gummies holders. Please connect your wallet!
 			</div>
 		);
@@ -108,13 +108,13 @@ export function DisplayBlogDetails({}) {
 
 	if (holdersQuery.isError || blogsTanstackQuery.isError) {
 		return (
-			<div className="h-screen flex items-center justify-center font-mono px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+			<div className="h-screen flex items-center justify-center font-blinker px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				There was an error fetching the data. Please try again later.
 			</div>
 		);
 	}
 	return (
-		<div className="font-mono md:ml-14 mt-20 ml-4">
+		<div className="font-blinker md:ml-14 mt-20 ml-4">
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
 				<div className="">
 					{/* map through blogsTanstackQuery.data.blogCollection.edges and for each inner node object make a blog card in a grid object */}

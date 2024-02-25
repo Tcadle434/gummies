@@ -13,7 +13,7 @@ interface ModalProps {
 export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, imageUrl, content }) => {
 	return (
 		<Transition.Root show={isOpen} as={Fragment}>
-			<Dialog as="div" className="relative z-50" onClose={onClose}>
+			<Dialog as="div" className="relative z-50 font-blinker" onClose={onClose}>
 				<Transition.Child
 					as={Fragment}
 					enter="ease-out duration-300"

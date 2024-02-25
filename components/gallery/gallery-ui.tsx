@@ -38,7 +38,7 @@ export function DisplayGallery() {
 
 	return (
 		<div className="">
-			<h1 className="text-3xl font-semibold pt-48 text-center font-pixelify-sans items-center">
+			<h1 className="text-3xl font-semibold mt-28 text-center font-blinker items-center">
 				Meet the Gummies
 			</h1>
 			<div className="flex justify-center mb-4">
