@@ -59,6 +59,7 @@ export function Navbar() {
 
 					<Disclosure.Panel className="md:hidden">
 						<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+							<WalletButton />
 							{navPages.map(({ label, path, icon, iconClasses }) => (
 								<Disclosure.Button
 									key={label}
