@@ -3,7 +3,7 @@ import { marketplaces } from "../gallery/gallery-ui";
 
 export function Footer() {
 	return (
-		<div className="bottom-0 z-10 w-full bg-foreground border-t-2 border-primary">
+		<div className="bottom-0 z-10 w-full bg-foreground border-t-2 border-primary pb-5 md:pb-1">
 			<div className="px-4 py-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
 				{/* Use flex-col for small screens and flex-row for medium screens and up */}
 				<div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
