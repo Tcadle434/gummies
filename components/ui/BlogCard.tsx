@@ -25,7 +25,9 @@ export function BlogCard({ title, id, subtitle, publishDate, content, cardImage 
 					<div className="text-left">
 						<div className={`font-blinker text-white font-semibold`}>{title}</div>
 						<div className={`font-blinker text-primary mt-2`}>{subtitle}</div>
-						<div className={`font-blinker text-mutedForeground opacity-75 mt-4`}>
+						<div
+							className={`font-blinker text-mutedForeground opacity-75 bottom-0 fixed mb-4 mt-4`}
+						>
 							{publishDate}
 						</div>
 					</div>

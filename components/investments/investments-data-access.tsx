@@ -2,20 +2,23 @@
 
 import { getGraphQLClient } from "@/app/utils/graphqlClient";
 import { useQuery } from "@tanstack/react-query";
-import allNotesQueryDocument from "@/graphql/queries/allNotesQuery.graphql";
+import allInvestmentsQueryDocument from "@/graphql/queries/allInvestmentsQuery.graphql";
+import { AllInvestmentsQuery } from "@/gql/graphql";
 
 export function useInvestments() {
 	const client = getGraphQLClient();
 
-	console.log("notes query", allNotesQueryDocument);
+	console.log("investments query", allInvestmentsQueryDocument);
 
-	const notesTanstackQuery = useQuery({
-		queryKey: ["notes"],
+	const investmentsTanstackQuery = useQuery<AllInvestmentsQuery>({
+		queryKey: ["investments"],
 		queryFn: async () => {
-			const data = await client.request(allNotesQueryDocument, { first: 10 });
+			const data: AllInvestmentsQuery = await client.request(allInvestmentsQueryDocument, {
+				first: 10,
+			});
 			return data;
 		},
 	});
 
-	return { notesTanstackQuery };
+	return { investmentsTanstackQuery };
 }

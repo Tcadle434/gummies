@@ -1,0 +1,15 @@
+# graphql/queries/AllInvestmentsQuery.graphql
+
+query AllInvestments {
+	investmentsCollection {
+		edges {
+			node {
+				id
+				name
+				date
+				status
+				imageUrl
+			}
+		}
+	}
+}

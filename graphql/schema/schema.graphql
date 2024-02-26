@@ -146,6 +146,17 @@ type Mutation {
     atMost: Int! = 1
   ): blogDeleteResponse!
 
+  """Deletes zero or more records from the `investments` collection"""
+  deleteFrominvestmentsCollection(
+    """Restricts the mutation's impact to records matching the criteria"""
+    filter: investmentsFilter
+
+    """
+    The maximum number of records in the collection permitted to be affected
+    """
+    atMost: Int! = 1
+  ): investmentsDeleteResponse!
+
   """Deletes zero or more records from the `notes` collection"""
   deleteFromnotesCollection(
     """Restricts the mutation's impact to records matching the criteria"""
@@ -162,6 +173,9 @@ type Mutation {
 
   """Adds one or more `blog` records to the collection"""
   insertIntoblogCollection(objects: [blogInsertInput!]!): blogInsertResponse
+
+  """Adds one or more `investments` records to the collection"""
+  insertIntoinvestmentsCollection(objects: [investmentsInsertInput!]!): investmentsInsertResponse
 
   """Adds one or more `notes` records to the collection"""
   insertIntonotesCollection(objects: [notesInsertInput!]!): notesInsertResponse
@@ -197,6 +211,22 @@ type Mutation {
     """
     atMost: Int! = 1
   ): blogUpdateResponse!
+
+  """Updates zero or more records in the `investments` collection"""
+  updateinvestmentsCollection(
+    """
+    Fields that are set will be updated for all records matching the `filter`
+    """
+    set: investmentsUpdateInput!
+
+    """Restricts the mutation's impact to records matching the criteria"""
+    filter: investmentsFilter
+
+    """
+    The maximum number of records in the collection permitted to be affected
+    """
+    atMost: Int! = 1
+  ): investmentsUpdateResponse!
 
   """Updates zero or more records in the `notes` collection"""
   updatenotesCollection(
@@ -296,6 +326,27 @@ type Query {
     """Sort order to apply to the collection"""
     orderBy: [blogOrderBy!]
   ): blogConnection
+
+  """A pagable collection of type `investments`"""
+  investmentsCollection(
+    """Query the first `n` records in the collection"""
+    first: Int
+
+    """Query the last `n` records in the collection"""
+    last: Int
+
+    """Query values in the collection before the provided cursor"""
+    before: Cursor
+
+    """Query values in the collection after the provided cursor"""
+    after: Cursor
+
+    """Filters to apply to the results set when querying from the collection"""
+    filter: investmentsFilter
+
+    """Sort order to apply to the collection"""
+    orderBy: [investmentsOrderBy!]
+  ): investmentsConnection
 
   """Retrieve a record by its `ID`"""
   node(
@@ -548,6 +599,109 @@ type blogUpdateResponse {
 
   """Array of records impacted by the mutation"""
   records: [blog!]!
+}
+
+enum investmentStatus {
+  invested
+  in_progress
+}
+
+"""
+Boolean expression comparing fields on type "investmentStatus"
+"""
+input investmentStatusFilter {
+  eq: investmentStatus
+  in: [investmentStatus!]
+  is: FilterIs
+  neq: investmentStatus
+}
+
+type investments implements Node {
+  """Globally Unique Record Identifier"""
+  nodeId: ID!
+  id: Int!
+  name: String!
+  date: String
+  status: investmentStatus
+  imageUrl: String
+}
+
+type investmentsConnection {
+  edges: [investmentsEdge!]!
+  pageInfo: PageInfo!
+}
+
+type investmentsDeleteResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [investments!]!
+}
+
+type investmentsEdge {
+  cursor: String!
+  node: investments!
+}
+
+input investmentsFilter {
+  id: IntFilter
+  name: StringFilter
+  date: StringFilter
+  status: investmentStatusFilter
+  imageUrl: StringFilter
+  nodeId: IDFilter
+
+  """
+  Returns true only if all its inner filters are true, otherwise returns false
+  """
+  and: [investmentsFilter!]
+
+  """
+  Returns true if at least one of its inner filters is true, otherwise returns false
+  """
+  or: [investmentsFilter!]
+
+  """Negates a filter"""
+  not: investmentsFilter
+}
+
+input investmentsInsertInput {
+  name: String
+  date: String
+  status: investmentStatus
+  imageUrl: String
+}
+
+type investmentsInsertResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [investments!]!
+}
+
+input investmentsOrderBy {
+  id: OrderByDirection
+  name: OrderByDirection
+  date: OrderByDirection
+  status: OrderByDirection
+  imageUrl: OrderByDirection
+}
+
+input investmentsUpdateInput {
+  name: String
+  date: String
+  status: investmentStatus
+  imageUrl: String
+}
+
+type investmentsUpdateResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [investments!]!
 }
 
 type notes implements Node {

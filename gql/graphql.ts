@@ -133,18 +133,24 @@ export type Mutation = {
 	deleteFromauctionsCollection: AuctionsDeleteResponse;
 	/** Deletes zero or more records from the `blog` collection */
 	deleteFromblogCollection: BlogDeleteResponse;
+	/** Deletes zero or more records from the `investments` collection */
+	deleteFrominvestmentsCollection: InvestmentsDeleteResponse;
 	/** Deletes zero or more records from the `notes` collection */
 	deleteFromnotesCollection: NotesDeleteResponse;
 	/** Adds one or more `auctions` records to the collection */
 	insertIntoauctionsCollection?: Maybe<AuctionsInsertResponse>;
 	/** Adds one or more `blog` records to the collection */
 	insertIntoblogCollection?: Maybe<BlogInsertResponse>;
+	/** Adds one or more `investments` records to the collection */
+	insertIntoinvestmentsCollection?: Maybe<InvestmentsInsertResponse>;
 	/** Adds one or more `notes` records to the collection */
 	insertIntonotesCollection?: Maybe<NotesInsertResponse>;
 	/** Updates zero or more records in the `auctions` collection */
 	updateauctionsCollection: AuctionsUpdateResponse;
 	/** Updates zero or more records in the `blog` collection */
 	updateblogCollection: BlogUpdateResponse;
+	/** Updates zero or more records in the `investments` collection */
+	updateinvestmentsCollection: InvestmentsUpdateResponse;
 	/** Updates zero or more records in the `notes` collection */
 	updatenotesCollection: NotesUpdateResponse;
 };
@@ -159,6 +165,12 @@ export type MutationDeleteFromauctionsCollectionArgs = {
 export type MutationDeleteFromblogCollectionArgs = {
 	atMost?: Scalars["Int"]["input"];
 	filter?: InputMaybe<BlogFilter>;
+};
+
+/** The root type for creating and mutating data */
+export type MutationDeleteFrominvestmentsCollectionArgs = {
+	atMost?: Scalars["Int"]["input"];
+	filter?: InputMaybe<InvestmentsFilter>;
 };
 
 /** The root type for creating and mutating data */
@@ -178,6 +190,11 @@ export type MutationInsertIntoblogCollectionArgs = {
 };
 
 /** The root type for creating and mutating data */
+export type MutationInsertIntoinvestmentsCollectionArgs = {
+	objects: Array<InvestmentsInsertInput>;
+};
+
+/** The root type for creating and mutating data */
 export type MutationInsertIntonotesCollectionArgs = {
 	objects: Array<NotesInsertInput>;
 };
@@ -194,6 +211,13 @@ export type MutationUpdateblogCollectionArgs = {
 	atMost?: Scalars["Int"]["input"];
 	filter?: InputMaybe<BlogFilter>;
 	set: BlogUpdateInput;
+};
+
+/** The root type for creating and mutating data */
+export type MutationUpdateinvestmentsCollectionArgs = {
+	atMost?: Scalars["Int"]["input"];
+	filter?: InputMaybe<InvestmentsFilter>;
+	set: InvestmentsUpdateInput;
 };
 
 /** The root type for creating and mutating data */
@@ -241,6 +265,8 @@ export type Query = {
 	auctionsCollection?: Maybe<AuctionsConnection>;
 	/** A pagable collection of type `blog` */
 	blogCollection?: Maybe<BlogConnection>;
+	/** A pagable collection of type `investments` */
+	investmentsCollection?: Maybe<InvestmentsConnection>;
 	/** Retrieve a record by its `ID` */
 	node?: Maybe<Node>;
 	/** A pagable collection of type `notes` */
@@ -265,6 +291,16 @@ export type QueryBlogCollectionArgs = {
 	first?: InputMaybe<Scalars["Int"]["input"]>;
 	last?: InputMaybe<Scalars["Int"]["input"]>;
 	orderBy?: InputMaybe<Array<BlogOrderBy>>;
+};
+
+/** The root type for querying data */
+export type QueryInvestmentsCollectionArgs = {
+	after?: InputMaybe<Scalars["Cursor"]["input"]>;
+	before?: InputMaybe<Scalars["Cursor"]["input"]>;
+	filter?: InputMaybe<InvestmentsFilter>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+	orderBy?: InputMaybe<Array<InvestmentsOrderBy>>;
 };
 
 /** The root type for querying data */
@@ -487,6 +523,103 @@ export type BlogUpdateResponse = {
 	records: Array<Blog>;
 };
 
+export enum InvestmentStatus {
+	InProgress = "in_progress",
+	Invested = "invested",
+}
+
+/** Boolean expression comparing fields on type "investmentStatus" */
+export type InvestmentStatusFilter = {
+	eq?: InputMaybe<InvestmentStatus>;
+	in?: InputMaybe<Array<InvestmentStatus>>;
+	is?: InputMaybe<FilterIs>;
+	neq?: InputMaybe<InvestmentStatus>;
+};
+
+export type Investments = Node & {
+	__typename?: "investments";
+	date?: Maybe<Scalars["String"]["output"]>;
+	id?: Scalars["Int"]["output"];
+	imageUrl?: Maybe<Scalars["String"]["output"]>;
+	name: Scalars["String"]["output"];
+	/** Globally Unique Record Identifier */
+	nodeId?: Scalars["ID"]["output"];
+	status?: Maybe<InvestmentStatus>;
+};
+
+export type InvestmentsConnection = {
+	__typename?: "investmentsConnection";
+	edges: Array<InvestmentsEdge>;
+	pageInfo: PageInfo;
+};
+
+export type InvestmentsDeleteResponse = {
+	__typename?: "investmentsDeleteResponse";
+	/** Count of the records impacted by the mutation */
+	affectedCount: Scalars["Int"]["output"];
+	/** Array of records impacted by the mutation */
+	records: Array<Investments>;
+};
+
+export type InvestmentsEdge = {
+	__typename?: "investmentsEdge";
+	cursor: Scalars["String"]["output"];
+	node: Investments;
+};
+
+export type InvestmentsFilter = {
+	/** Returns true only if all its inner filters are true, otherwise returns false */
+	and?: InputMaybe<Array<InvestmentsFilter>>;
+	date?: InputMaybe<StringFilter>;
+	id?: InputMaybe<IntFilter>;
+	imageUrl?: InputMaybe<StringFilter>;
+	name?: InputMaybe<StringFilter>;
+	nodeId?: InputMaybe<IdFilter>;
+	/** Negates a filter */
+	not?: InputMaybe<InvestmentsFilter>;
+	/** Returns true if at least one of its inner filters is true, otherwise returns false */
+	or?: InputMaybe<Array<InvestmentsFilter>>;
+	status?: InputMaybe<InvestmentStatusFilter>;
+};
+
+export type InvestmentsInsertInput = {
+	date?: InputMaybe<Scalars["String"]["input"]>;
+	imageUrl?: InputMaybe<Scalars["String"]["input"]>;
+	name?: InputMaybe<Scalars["String"]["input"]>;
+	status?: InputMaybe<InvestmentStatus>;
+};
+
+export type InvestmentsInsertResponse = {
+	__typename?: "investmentsInsertResponse";
+	/** Count of the records impacted by the mutation */
+	affectedCount: Scalars["Int"]["output"];
+	/** Array of records impacted by the mutation */
+	records: Array<Investments>;
+};
+
+export type InvestmentsOrderBy = {
+	date?: InputMaybe<OrderByDirection>;
+	id?: InputMaybe<OrderByDirection>;
+	imageUrl?: InputMaybe<OrderByDirection>;
+	name?: InputMaybe<OrderByDirection>;
+	status?: InputMaybe<OrderByDirection>;
+};
+
+export type InvestmentsUpdateInput = {
+	date?: InputMaybe<Scalars["String"]["input"]>;
+	imageUrl?: InputMaybe<Scalars["String"]["input"]>;
+	name?: InputMaybe<Scalars["String"]["input"]>;
+	status?: InputMaybe<InvestmentStatus>;
+};
+
+export type InvestmentsUpdateResponse = {
+	__typename?: "investmentsUpdateResponse";
+	/** Count of the records impacted by the mutation */
+	affectedCount: Scalars["Int"]["output"];
+	/** Array of records impacted by the mutation */
+	records: Array<Investments>;
+};
+
 export type Notes = Node & {
 	__typename?: "notes";
 	id: Scalars["Int"]["output"];
@@ -589,6 +722,27 @@ export type AllBlogsQuery = {
 				subtitle?: string | null;
 				publishDate?: any | null;
 				content?: string | null;
+				cardImage?: string | null;
+			};
+		}>;
+	} | null;
+};
+
+export type AllInvestmentsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type AllInvestmentsQuery = {
+	__typename?: "Query";
+	investmentsCollection?: {
+		__typename?: "investmentsConnection";
+		edges: Array<{
+			__typename?: "investmentsEdge";
+			node: {
+				__typename?: "investments";
+				id: number;
+				name: string;
+				date?: string | null;
+				status?: InvestmentStatus | null;
+				imageUrl?: string | null;
 			};
 		}>;
 	} | null;
@@ -749,6 +903,13 @@ export const AllBlogsDocument = {
 																value: "content",
 															},
 														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "cardImage",
+															},
+														},
 													],
 												},
 											},
@@ -763,6 +924,71 @@ export const AllBlogsDocument = {
 		},
 	],
 } as unknown as DocumentNode<AllBlogsQuery, AllBlogsQueryVariables>;
+export const AllInvestmentsDocument = {
+	kind: "Document",
+	definitions: [
+		{
+			kind: "OperationDefinition",
+			operation: "query",
+			name: { kind: "Name", value: "AllInvestments" },
+			selectionSet: {
+				kind: "SelectionSet",
+				selections: [
+					{
+						kind: "Field",
+						name: { kind: "Name", value: "investmentsCollection" },
+						selectionSet: {
+							kind: "SelectionSet",
+							selections: [
+								{
+									kind: "Field",
+									name: { kind: "Name", value: "edges" },
+									selectionSet: {
+										kind: "SelectionSet",
+										selections: [
+											{
+												kind: "Field",
+												name: { kind: "Name", value: "node" },
+												selectionSet: {
+													kind: "SelectionSet",
+													selections: [
+														{
+															kind: "Field",
+															name: { kind: "Name", value: "id" },
+														},
+														{
+															kind: "Field",
+															name: { kind: "Name", value: "name" },
+														},
+														{
+															kind: "Field",
+															name: { kind: "Name", value: "date" },
+														},
+														{
+															kind: "Field",
+															name: { kind: "Name", value: "status" },
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "imageUrl",
+															},
+														},
+													],
+												},
+											},
+										],
+									},
+								},
+							],
+						},
+					},
+				],
+			},
+		},
+	],
+} as unknown as DocumentNode<AllInvestmentsQuery, AllInvestmentsQueryVariables>;
 export const AllNotesDocument = {
 	kind: "Document",
 	definitions: [
