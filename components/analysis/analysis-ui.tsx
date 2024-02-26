@@ -4,8 +4,8 @@ import { useHolders } from "../blog/holders-data-access";
 import { useAnalysis } from "./analysis-data-access";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { marketplaces } from "../gallery/gallery-ui";
-import { Analysis } from "@/gql/graphql";
 import AnalysisChart from "../ui/AnalysisChart";
+import GRatingChart from "../ui/GRatingChart";
 import Loader from "../ui/Loader";
 
 export function DisplayAnalysis() {
@@ -44,10 +44,22 @@ export function DisplayAnalysis() {
 			</h1>
 
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
-				<div className="mt-10 lg:max-w-4xl md:max-w-2xl max-w-80">
-					<AnalysisChart
-						analysisData={analysisTanstackQuery.data?.analysisCollection!.edges}
-					/>
+				<div>
+					<div className="mt-10 lg:max-w-4xl md:max-w-2xl max-w-96">
+						<AnalysisChart
+							analysisData={analysisTanstackQuery.data?.analysisCollection!.edges}
+						/>
+					</div>
+					<h2 className="mt-10 text-center text-xl md:text-2xl mb-4">
+						G-Rating and Safety Rating Calculation
+					</h2>
+					<p className="text-left text-sm md:text-base mb-4 text-mutedForeground ml-2">
+						Disclaimer: This model is still under development and will be improved
+						whenever new metrics and/or logic are added. <br />
+						G-Rating is calculated based on all the metrics below, and Satefy rating is
+						calculated based on Contract Risk, Audit, Reputation, Team.
+					</p>
+					<GRatingChart />
 				</div>
 			) : (
 				<div className="h-screen flex items-center justify-center text-center flex-col">

@@ -2,7 +2,6 @@ import React from "react";
 import { Analysis } from "@/gql/graphql";
 
 export default function AnalysisChart({ analysisData }: { analysisData: any }) {
-	console.log(analysisData[0].node.protocol);
 	const keys = [
 		"Protocol",
 		"Category",
