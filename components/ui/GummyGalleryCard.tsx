@@ -33,7 +33,7 @@ export function GummyGalleryCard({ name, imageUrl }: GummyGalleryCardProps) {
 				className="hover:scale-105 transform duration-500 cursor-pointer"
 			>
 				<div
-					className={`bg-foreground p-4 rounded-md border-border border-2 transform transition-opacity duration-500 ease-in-out ${
+					className={`bg-foreground p-4 rounded-md border-border border-2 hover:border-primary transform transition-opacity duration-500 ease-in-out ${
 						imageLoaded ? "opacity-100" : "opacity-0"
 					}`}
 				>
