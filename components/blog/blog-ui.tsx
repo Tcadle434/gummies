@@ -39,7 +39,7 @@ export function DisplayBlogCard() {
 
 	return (
 		<div className="font-blinker my-6 md:mt-28 px-4 md:px-20 mt-24">
-			<h1 className="text-4xl font-semibold text-center">Blog Articles</h1>
+			<h1 className="md:text-4xl text-3xl font-semibold text-center">Blog Articles</h1>
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
 				<div className="grid grid-cols-1 gap-4 lg:gap-8 md:grid-cols-2 mt-8">
 					{/* map through blogsTanstackQuery.data.blogCollection.edges and for each inner node object make a blog card in a grid object */}

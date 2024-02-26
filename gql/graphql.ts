@@ -129,6 +129,8 @@ export type IntFilter = {
 /** The root type for creating and mutating data */
 export type Mutation = {
 	__typename?: "Mutation";
+	/** Deletes zero or more records from the `analysis` collection */
+	deleteFromanalysisCollection: AnalysisDeleteResponse;
 	/** Deletes zero or more records from the `auctions` collection */
 	deleteFromauctionsCollection: AuctionsDeleteResponse;
 	/** Deletes zero or more records from the `blog` collection */
@@ -137,6 +139,8 @@ export type Mutation = {
 	deleteFrominvestmentsCollection: InvestmentsDeleteResponse;
 	/** Deletes zero or more records from the `notes` collection */
 	deleteFromnotesCollection: NotesDeleteResponse;
+	/** Adds one or more `analysis` records to the collection */
+	insertIntoanalysisCollection?: Maybe<AnalysisInsertResponse>;
 	/** Adds one or more `auctions` records to the collection */
 	insertIntoauctionsCollection?: Maybe<AuctionsInsertResponse>;
 	/** Adds one or more `blog` records to the collection */
@@ -145,6 +149,8 @@ export type Mutation = {
 	insertIntoinvestmentsCollection?: Maybe<InvestmentsInsertResponse>;
 	/** Adds one or more `notes` records to the collection */
 	insertIntonotesCollection?: Maybe<NotesInsertResponse>;
+	/** Updates zero or more records in the `analysis` collection */
+	updateanalysisCollection: AnalysisUpdateResponse;
 	/** Updates zero or more records in the `auctions` collection */
 	updateauctionsCollection: AuctionsUpdateResponse;
 	/** Updates zero or more records in the `blog` collection */
@@ -153,6 +159,12 @@ export type Mutation = {
 	updateinvestmentsCollection: InvestmentsUpdateResponse;
 	/** Updates zero or more records in the `notes` collection */
 	updatenotesCollection: NotesUpdateResponse;
+};
+
+/** The root type for creating and mutating data */
+export type MutationDeleteFromanalysisCollectionArgs = {
+	atMost?: Scalars["Int"]["input"];
+	filter?: InputMaybe<AnalysisFilter>;
 };
 
 /** The root type for creating and mutating data */
@@ -180,6 +192,11 @@ export type MutationDeleteFromnotesCollectionArgs = {
 };
 
 /** The root type for creating and mutating data */
+export type MutationInsertIntoanalysisCollectionArgs = {
+	objects: Array<AnalysisInsertInput>;
+};
+
+/** The root type for creating and mutating data */
 export type MutationInsertIntoauctionsCollectionArgs = {
 	objects: Array<AuctionsInsertInput>;
 };
@@ -197,6 +214,13 @@ export type MutationInsertIntoinvestmentsCollectionArgs = {
 /** The root type for creating and mutating data */
 export type MutationInsertIntonotesCollectionArgs = {
 	objects: Array<NotesInsertInput>;
+};
+
+/** The root type for creating and mutating data */
+export type MutationUpdateanalysisCollectionArgs = {
+	atMost?: Scalars["Int"]["input"];
+	filter?: InputMaybe<AnalysisFilter>;
+	set: AnalysisUpdateInput;
 };
 
 /** The root type for creating and mutating data */
@@ -261,6 +285,8 @@ export type PageInfo = {
 /** The root type for querying data */
 export type Query = {
 	__typename?: "Query";
+	/** A pagable collection of type `analysis` */
+	analysisCollection?: Maybe<AnalysisConnection>;
 	/** A pagable collection of type `auctions` */
 	auctionsCollection?: Maybe<AuctionsConnection>;
 	/** A pagable collection of type `blog` */
@@ -271,6 +297,16 @@ export type Query = {
 	node?: Maybe<Node>;
 	/** A pagable collection of type `notes` */
 	notesCollection?: Maybe<NotesConnection>;
+};
+
+/** The root type for querying data */
+export type QueryAnalysisCollectionArgs = {
+	after?: InputMaybe<Scalars["Cursor"]["input"]>;
+	before?: InputMaybe<Scalars["Cursor"]["input"]>;
+	filter?: InputMaybe<AnalysisFilter>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+	orderBy?: InputMaybe<Array<AnalysisOrderBy>>;
 };
 
 /** The root type for querying data */
@@ -353,6 +389,150 @@ export type UuidFilter = {
 	in?: InputMaybe<Array<Scalars["UUID"]["input"]>>;
 	is?: InputMaybe<FilterIs>;
 	neq?: InputMaybe<Scalars["UUID"]["input"]>;
+};
+
+export type Analysis = Node & {
+	__typename?: "analysis";
+	assetcoverage?: Maybe<Scalars["String"]["output"]>;
+	audit?: Maybe<Scalars["String"]["output"]>;
+	category?: Maybe<Scalars["String"]["output"]>;
+	contractrisk?: Maybe<Scalars["String"]["output"]>;
+	grating?: Maybe<Scalars["String"]["output"]>;
+	hastoken?: Maybe<Scalars["String"]["output"]>;
+	id?: Scalars["Int"]["output"];
+	lastupdate?: Maybe<Scalars["String"]["output"]>;
+	liquidity?: Maybe<Scalars["String"]["output"]>;
+	narrative?: Maybe<Scalars["String"]["output"]>;
+	/** Globally Unique Record Identifier */
+	nodeId?: Scalars["ID"]["output"];
+	protocol: Scalars["String"]["output"];
+	reputation?: Maybe<Scalars["String"]["output"]>;
+	safety?: Maybe<Scalars["String"]["output"]>;
+	sentiment?: Maybe<Scalars["String"]["output"]>;
+	team?: Maybe<Scalars["String"]["output"]>;
+	tvl?: Maybe<Scalars["String"]["output"]>;
+	userbase?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type AnalysisConnection = {
+	__typename?: "analysisConnection";
+	edges: Array<AnalysisEdge>;
+	pageInfo: PageInfo;
+};
+
+export type AnalysisDeleteResponse = {
+	__typename?: "analysisDeleteResponse";
+	/** Count of the records impacted by the mutation */
+	affectedCount: Scalars["Int"]["output"];
+	/** Array of records impacted by the mutation */
+	records: Array<Analysis>;
+};
+
+export type AnalysisEdge = {
+	__typename?: "analysisEdge";
+	cursor: Scalars["String"]["output"];
+	node: Analysis;
+};
+
+export type AnalysisFilter = {
+	/** Returns true only if all its inner filters are true, otherwise returns false */
+	and?: InputMaybe<Array<AnalysisFilter>>;
+	assetcoverage?: InputMaybe<StringFilter>;
+	audit?: InputMaybe<StringFilter>;
+	category?: InputMaybe<StringFilter>;
+	contractrisk?: InputMaybe<StringFilter>;
+	grating?: InputMaybe<StringFilter>;
+	hastoken?: InputMaybe<StringFilter>;
+	id?: InputMaybe<IntFilter>;
+	lastupdate?: InputMaybe<StringFilter>;
+	liquidity?: InputMaybe<StringFilter>;
+	narrative?: InputMaybe<StringFilter>;
+	nodeId?: InputMaybe<IdFilter>;
+	/** Negates a filter */
+	not?: InputMaybe<AnalysisFilter>;
+	/** Returns true if at least one of its inner filters is true, otherwise returns false */
+	or?: InputMaybe<Array<AnalysisFilter>>;
+	protocol?: InputMaybe<StringFilter>;
+	reputation?: InputMaybe<StringFilter>;
+	safety?: InputMaybe<StringFilter>;
+	sentiment?: InputMaybe<StringFilter>;
+	team?: InputMaybe<StringFilter>;
+	tvl?: InputMaybe<StringFilter>;
+	userbase?: InputMaybe<StringFilter>;
+};
+
+export type AnalysisInsertInput = {
+	assetcoverage?: InputMaybe<Scalars["String"]["input"]>;
+	audit?: InputMaybe<Scalars["String"]["input"]>;
+	category?: InputMaybe<Scalars["String"]["input"]>;
+	contractrisk?: InputMaybe<Scalars["String"]["input"]>;
+	grating?: InputMaybe<Scalars["String"]["input"]>;
+	hastoken?: InputMaybe<Scalars["String"]["input"]>;
+	lastupdate?: InputMaybe<Scalars["String"]["input"]>;
+	liquidity?: InputMaybe<Scalars["String"]["input"]>;
+	narrative?: InputMaybe<Scalars["String"]["input"]>;
+	protocol?: InputMaybe<Scalars["String"]["input"]>;
+	reputation?: InputMaybe<Scalars["String"]["input"]>;
+	safety?: InputMaybe<Scalars["String"]["input"]>;
+	sentiment?: InputMaybe<Scalars["String"]["input"]>;
+	team?: InputMaybe<Scalars["String"]["input"]>;
+	tvl?: InputMaybe<Scalars["String"]["input"]>;
+	userbase?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type AnalysisInsertResponse = {
+	__typename?: "analysisInsertResponse";
+	/** Count of the records impacted by the mutation */
+	affectedCount: Scalars["Int"]["output"];
+	/** Array of records impacted by the mutation */
+	records: Array<Analysis>;
+};
+
+export type AnalysisOrderBy = {
+	assetcoverage?: InputMaybe<OrderByDirection>;
+	audit?: InputMaybe<OrderByDirection>;
+	category?: InputMaybe<OrderByDirection>;
+	contractrisk?: InputMaybe<OrderByDirection>;
+	grating?: InputMaybe<OrderByDirection>;
+	hastoken?: InputMaybe<OrderByDirection>;
+	id?: InputMaybe<OrderByDirection>;
+	lastupdate?: InputMaybe<OrderByDirection>;
+	liquidity?: InputMaybe<OrderByDirection>;
+	narrative?: InputMaybe<OrderByDirection>;
+	protocol?: InputMaybe<OrderByDirection>;
+	reputation?: InputMaybe<OrderByDirection>;
+	safety?: InputMaybe<OrderByDirection>;
+	sentiment?: InputMaybe<OrderByDirection>;
+	team?: InputMaybe<OrderByDirection>;
+	tvl?: InputMaybe<OrderByDirection>;
+	userbase?: InputMaybe<OrderByDirection>;
+};
+
+export type AnalysisUpdateInput = {
+	assetcoverage?: InputMaybe<Scalars["String"]["input"]>;
+	audit?: InputMaybe<Scalars["String"]["input"]>;
+	category?: InputMaybe<Scalars["String"]["input"]>;
+	contractrisk?: InputMaybe<Scalars["String"]["input"]>;
+	grating?: InputMaybe<Scalars["String"]["input"]>;
+	hastoken?: InputMaybe<Scalars["String"]["input"]>;
+	lastupdate?: InputMaybe<Scalars["String"]["input"]>;
+	liquidity?: InputMaybe<Scalars["String"]["input"]>;
+	narrative?: InputMaybe<Scalars["String"]["input"]>;
+	protocol?: InputMaybe<Scalars["String"]["input"]>;
+	reputation?: InputMaybe<Scalars["String"]["input"]>;
+	safety?: InputMaybe<Scalars["String"]["input"]>;
+	sentiment?: InputMaybe<Scalars["String"]["input"]>;
+	team?: InputMaybe<Scalars["String"]["input"]>;
+	tvl?: InputMaybe<Scalars["String"]["input"]>;
+	userbase?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type AnalysisUpdateResponse = {
+	__typename?: "analysisUpdateResponse";
+	/** Count of the records impacted by the mutation */
+	affectedCount: Scalars["Int"]["output"];
+	/** Array of records impacted by the mutation */
+	records: Array<Analysis>;
 };
 
 export type Auctions = Node & {
@@ -707,6 +887,38 @@ export type ActiveAuctionQuery = {
 	} | null;
 };
 
+export type AllAnalysisQueryVariables = Exact<{ [key: string]: never }>;
+
+export type AllAnalysisQuery = {
+	__typename?: "Query";
+	analysisCollection?: {
+		__typename?: "analysisConnection";
+		edges: Array<{
+			__typename?: "analysisEdge";
+			node: {
+				__typename?: "analysis";
+				id: number;
+				protocol: string;
+				category?: string | null;
+				tvl?: string | null;
+				liquidity?: string | null;
+				assetcoverage?: string | null;
+				userbase?: string | null;
+				hastoken?: string | null;
+				narrative?: string | null;
+				sentiment?: string | null;
+				contractrisk?: string | null;
+				audit?: string | null;
+				reputation?: string | null;
+				team?: string | null;
+				grating?: string | null;
+				safety?: string | null;
+				lastupdate?: string | null;
+			};
+		}>;
+	} | null;
+};
+
 export type AllBlogsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type AllBlogsQuery = {
@@ -846,6 +1058,152 @@ export const ActiveAuctionDocument = {
 		},
 	],
 } as unknown as DocumentNode<ActiveAuctionQuery, ActiveAuctionQueryVariables>;
+export const AllAnalysisDocument = {
+	kind: "Document",
+	definitions: [
+		{
+			kind: "OperationDefinition",
+			operation: "query",
+			name: { kind: "Name", value: "allAnalysis" },
+			selectionSet: {
+				kind: "SelectionSet",
+				selections: [
+					{
+						kind: "Field",
+						name: { kind: "Name", value: "analysisCollection" },
+						selectionSet: {
+							kind: "SelectionSet",
+							selections: [
+								{
+									kind: "Field",
+									name: { kind: "Name", value: "edges" },
+									selectionSet: {
+										kind: "SelectionSet",
+										selections: [
+											{
+												kind: "Field",
+												name: { kind: "Name", value: "node" },
+												selectionSet: {
+													kind: "SelectionSet",
+													selections: [
+														{
+															kind: "Field",
+															name: { kind: "Name", value: "id" },
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "protocol",
+															},
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "category",
+															},
+														},
+														{
+															kind: "Field",
+															name: { kind: "Name", value: "tvl" },
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "liquidity",
+															},
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "assetcoverage",
+															},
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "userbase",
+															},
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "hastoken",
+															},
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "narrative",
+															},
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "sentiment",
+															},
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "contractrisk",
+															},
+														},
+														{
+															kind: "Field",
+															name: { kind: "Name", value: "audit" },
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "reputation",
+															},
+														},
+														{
+															kind: "Field",
+															name: { kind: "Name", value: "team" },
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "grating",
+															},
+														},
+														{
+															kind: "Field",
+															name: { kind: "Name", value: "safety" },
+														},
+														{
+															kind: "Field",
+															name: {
+																kind: "Name",
+																value: "lastupdate",
+															},
+														},
+													],
+												},
+											},
+										],
+									},
+								},
+							],
+						},
+					},
+				],
+			},
+		},
+	],
+} as unknown as DocumentNode<AllAnalysisQuery, AllAnalysisQueryVariables>;
 export const AllBlogsDocument = {
 	kind: "Document",
 	definitions: [

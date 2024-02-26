@@ -124,6 +124,17 @@ scalar JSON
 
 """The root type for creating and mutating data"""
 type Mutation {
+  """Deletes zero or more records from the `analysis` collection"""
+  deleteFromanalysisCollection(
+    """Restricts the mutation's impact to records matching the criteria"""
+    filter: analysisFilter
+
+    """
+    The maximum number of records in the collection permitted to be affected
+    """
+    atMost: Int! = 1
+  ): analysisDeleteResponse!
+
   """Deletes zero or more records from the `auctions` collection"""
   deleteFromauctionsCollection(
     """Restricts the mutation's impact to records matching the criteria"""
@@ -168,6 +179,9 @@ type Mutation {
     atMost: Int! = 1
   ): notesDeleteResponse!
 
+  """Adds one or more `analysis` records to the collection"""
+  insertIntoanalysisCollection(objects: [analysisInsertInput!]!): analysisInsertResponse
+
   """Adds one or more `auctions` records to the collection"""
   insertIntoauctionsCollection(objects: [auctionsInsertInput!]!): auctionsInsertResponse
 
@@ -179,6 +193,22 @@ type Mutation {
 
   """Adds one or more `notes` records to the collection"""
   insertIntonotesCollection(objects: [notesInsertInput!]!): notesInsertResponse
+
+  """Updates zero or more records in the `analysis` collection"""
+  updateanalysisCollection(
+    """
+    Fields that are set will be updated for all records matching the `filter`
+    """
+    set: analysisUpdateInput!
+
+    """Restricts the mutation's impact to records matching the criteria"""
+    filter: analysisFilter
+
+    """
+    The maximum number of records in the collection permitted to be affected
+    """
+    atMost: Int! = 1
+  ): analysisUpdateResponse!
 
   """Updates zero or more records in the `auctions` collection"""
   updateauctionsCollection(
@@ -285,6 +315,27 @@ type PageInfo {
 
 """The root type for querying data"""
 type Query {
+  """A pagable collection of type `analysis`"""
+  analysisCollection(
+    """Query the first `n` records in the collection"""
+    first: Int
+
+    """Query the last `n` records in the collection"""
+    last: Int
+
+    """Query values in the collection before the provided cursor"""
+    before: Cursor
+
+    """Query values in the collection after the provided cursor"""
+    after: Cursor
+
+    """Filters to apply to the results set when querying from the collection"""
+    filter: analysisFilter
+
+    """Sort order to apply to the collection"""
+    orderBy: [analysisOrderBy!]
+  ): analysisConnection
+
   """A pagable collection of type `auctions`"""
   auctionsCollection(
     """Query the first `n` records in the collection"""
@@ -423,6 +474,154 @@ input UUIDFilter {
   in: [UUID!]
   is: FilterIs
   neq: UUID
+}
+
+type analysis implements Node {
+  """Globally Unique Record Identifier"""
+  nodeId: ID!
+  id: Int!
+  protocol: String!
+  category: String
+  tvl: String
+  liquidity: String
+  assetcoverage: String
+  userbase: String
+  hastoken: String
+  narrative: String
+  sentiment: String
+  contractrisk: String
+  audit: String
+  reputation: String
+  team: String
+  grating: String
+  safety: String
+  lastupdate: String
+}
+
+type analysisConnection {
+  edges: [analysisEdge!]!
+  pageInfo: PageInfo!
+}
+
+type analysisDeleteResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [analysis!]!
+}
+
+type analysisEdge {
+  cursor: String!
+  node: analysis!
+}
+
+input analysisFilter {
+  id: IntFilter
+  protocol: StringFilter
+  category: StringFilter
+  tvl: StringFilter
+  liquidity: StringFilter
+  assetcoverage: StringFilter
+  userbase: StringFilter
+  hastoken: StringFilter
+  narrative: StringFilter
+  sentiment: StringFilter
+  contractrisk: StringFilter
+  audit: StringFilter
+  reputation: StringFilter
+  team: StringFilter
+  grating: StringFilter
+  safety: StringFilter
+  lastupdate: StringFilter
+  nodeId: IDFilter
+
+  """
+  Returns true only if all its inner filters are true, otherwise returns false
+  """
+  and: [analysisFilter!]
+
+  """
+  Returns true if at least one of its inner filters is true, otherwise returns false
+  """
+  or: [analysisFilter!]
+
+  """Negates a filter"""
+  not: analysisFilter
+}
+
+input analysisInsertInput {
+  protocol: String
+  category: String
+  tvl: String
+  liquidity: String
+  assetcoverage: String
+  userbase: String
+  hastoken: String
+  narrative: String
+  sentiment: String
+  contractrisk: String
+  audit: String
+  reputation: String
+  team: String
+  grating: String
+  safety: String
+  lastupdate: String
+}
+
+type analysisInsertResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [analysis!]!
+}
+
+input analysisOrderBy {
+  id: OrderByDirection
+  protocol: OrderByDirection
+  category: OrderByDirection
+  tvl: OrderByDirection
+  liquidity: OrderByDirection
+  assetcoverage: OrderByDirection
+  userbase: OrderByDirection
+  hastoken: OrderByDirection
+  narrative: OrderByDirection
+  sentiment: OrderByDirection
+  contractrisk: OrderByDirection
+  audit: OrderByDirection
+  reputation: OrderByDirection
+  team: OrderByDirection
+  grating: OrderByDirection
+  safety: OrderByDirection
+  lastupdate: OrderByDirection
+}
+
+input analysisUpdateInput {
+  protocol: String
+  category: String
+  tvl: String
+  liquidity: String
+  assetcoverage: String
+  userbase: String
+  hastoken: String
+  narrative: String
+  sentiment: String
+  contractrisk: String
+  audit: String
+  reputation: String
+  team: String
+  grating: String
+  safety: String
+  lastupdate: String
+}
+
+type analysisUpdateResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [analysis!]!
 }
 
 type auctions implements Node {

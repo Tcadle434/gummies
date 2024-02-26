@@ -1,13 +1,17 @@
 "use client";
 
 import { useHolders } from "../blog/holders-data-access";
+import { useAnalysis } from "./analysis-data-access";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { marketplaces } from "../gallery/gallery-ui";
+import { Analysis } from "@/gql/graphql";
+import AnalysisChart from "../ui/AnalysisChart";
 import Loader from "../ui/Loader";
 
 export function DisplayAnalysis() {
 	const { publicKey } = useWallet();
 	const { holdersQuery } = useHolders();
+	const { analysisTanstackQuery } = useAnalysis();
 
 	if (!publicKey) {
 		return (
@@ -17,7 +21,7 @@ export function DisplayAnalysis() {
 		);
 	}
 
-	if (holdersQuery.isLoading) {
+	if (holdersQuery.isLoading || analysisTanstackQuery.isLoading) {
 		return (
 			<div className="h-screen flex items-center justify-center">
 				<Loader />
@@ -25,15 +29,25 @@ export function DisplayAnalysis() {
 		);
 	}
 
+	if (holdersQuery.isError || analysisTanstackQuery.isError) {
+		return (
+			<div className="h-screen flex items-center justify-center font-blinker px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+				There was an error fetching the data. Please try again later.
+			</div>
+		);
+	}
+
 	return (
-		<div className="font-blinker px-4 md:px-20">
+		<div className="font-blinker my-6 md:mt-28 px-4 md:px-20 mt-24">
+			<h1 className="md:text-4xl text-3xl font-semibold text-center">
+				Solana Ecosystem Index
+			</h1>
+
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
-				<div className="h-screen flex items-center justify-center flex-col">
-					<h1 className="text-xl text-center">
-						Welcome Gummies Holder!
-						<br />
-						Analysis here.
-					</h1>
+				<div className="mt-10 lg:max-w-4xl md:max-w-2xl max-w-80">
+					<AnalysisChart
+						analysisData={analysisTanstackQuery.data?.analysisCollection!.edges}
+					/>
 				</div>
 			) : (
 				<div className="h-screen flex items-center justify-center text-center flex-col">

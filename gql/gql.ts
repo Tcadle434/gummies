@@ -14,6 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "query activeAuction {\n  auctionsCollection(filter: {isActive: {eq: true}}) {\n    edges {\n      node {\n        name\n        link\n        isActive\n      }\n    }\n  }\n}": types.ActiveAuctionDocument,
+    "query allAnalysis {\n  analysisCollection {\n    edges {\n      node {\n        id\n        protocol\n        category\n        tvl\n        liquidity\n        assetcoverage\n        userbase\n        hastoken\n        narrative\n        sentiment\n        contractrisk\n        audit\n        reputation\n        team\n        grating\n        safety\n        lastupdate\n      }\n    }\n  }\n}": types.AllAnalysisDocument,
     "query AllBlogs {\n  blogCollection {\n    edges {\n      node {\n        id\n        title\n        subtitle\n        publishDate\n        content\n        cardImage\n      }\n    }\n  }\n}": types.AllBlogsDocument,
     "query AllInvestments {\n  investmentsCollection {\n    edges {\n      node {\n        id\n        name\n        date\n        status\n        imageUrl\n      }\n    }\n  }\n}": types.AllInvestmentsDocument,
     "query AllNotes {\n  notesCollection {\n    __typename\n    edges {\n      node {\n        nodeId\n        id\n        title\n      }\n    }\n  }\n}": types.AllNotesDocument,
@@ -37,6 +38,10 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "query activeAuction {\n  auctionsCollection(filter: {isActive: {eq: true}}) {\n    edges {\n      node {\n        name\n        link\n        isActive\n      }\n    }\n  }\n}"): (typeof documents)["query activeAuction {\n  auctionsCollection(filter: {isActive: {eq: true}}) {\n    edges {\n      node {\n        name\n        link\n        isActive\n      }\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query allAnalysis {\n  analysisCollection {\n    edges {\n      node {\n        id\n        protocol\n        category\n        tvl\n        liquidity\n        assetcoverage\n        userbase\n        hastoken\n        narrative\n        sentiment\n        contractrisk\n        audit\n        reputation\n        team\n        grating\n        safety\n        lastupdate\n      }\n    }\n  }\n}"): (typeof documents)["query allAnalysis {\n  analysisCollection {\n    edges {\n      node {\n        id\n        protocol\n        category\n        tvl\n        liquidity\n        assetcoverage\n        userbase\n        hastoken\n        narrative\n        sentiment\n        contractrisk\n        audit\n        reputation\n        team\n        grating\n        safety\n        lastupdate\n      }\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

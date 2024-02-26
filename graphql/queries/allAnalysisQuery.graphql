@@ -1,0 +1,27 @@
+# graphql/queries/allAnalysisQuery.graphql
+
+query allAnalysis {
+	analysisCollection {
+		edges {
+			node {
+				id
+				protocol
+				category
+				tvl
+				liquidity
+				assetcoverage
+				userbase
+				hastoken
+				narrative
+				sentiment
+				contractrisk
+				audit
+				reputation
+				team
+				grating
+				safety
+				lastupdate
+			}
+		}
+	}
+}
