@@ -37,7 +37,7 @@ export function DisplayGallery() {
 	}
 
 	return (
-		<div className="">
+		<div className="mb-4">
 			<h1 className="text-3xl font-semibold mt-28 text-center font-blinker items-center">
 				Meet the Gummies
 			</h1>
@@ -59,7 +59,7 @@ export function DisplayGallery() {
 					))}
 				</div>
 			</div>
-			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
 				{gummiesGalaryQuery.data?.map((gummy: Gummy, index: number) => (
 					<GummyGalleryCard key={index} name={gummy.name} imageUrl={gummy.imageUrl} />
 				))}
