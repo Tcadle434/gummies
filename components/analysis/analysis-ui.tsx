@@ -26,7 +26,7 @@ export function DisplayAnalysis() {
 	}
 
 	return (
-		<div className="font-blinker ml-14">
+		<div className="font-blinker px-4 md:px-20">
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
 				<div className="h-screen flex items-center justify-center flex-col">
 					<h1 className="text-xl text-center">

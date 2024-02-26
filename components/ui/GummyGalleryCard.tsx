@@ -40,7 +40,7 @@ export function GummyGalleryCard({ name, imageUrl }: GummyGalleryCardProps) {
 					<img
 						src={imageUrl}
 						alt={name}
-						className={`w-full h-48 object-cover rounded-md ${
+						className={`md:w-48 md:h-48 object-cover rounded-md justify-center h-64 w-64${
 							imageLoaded ? "" : "hidden"
 						}`}
 						onLoad={handleImageLoad}
