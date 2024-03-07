@@ -7,9 +7,6 @@ import { AllInvestmentsQuery } from "@/gql/graphql";
 
 export function useInvestments() {
 	const client = getGraphQLClient();
-
-	console.log("investments query", allInvestmentsQueryDocument);
-
 	const investmentsTanstackQuery = useQuery<AllInvestmentsQuery>({
 		queryKey: ["investments"],
 		queryFn: async () => {

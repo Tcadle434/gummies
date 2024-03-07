@@ -19,7 +19,6 @@ export const getHolders = async (): Promise<string[]> => {
 	});
 
 	const data = await response.json();
-	console.log(data);
 	const owners: string[] = data.result.items.map((item: any) => item.ownership.owner);
 	return [...new Set(owners)];
 };

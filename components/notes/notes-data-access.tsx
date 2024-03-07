@@ -6,9 +6,6 @@ import allNotesQueryDocument from "@/graphql/queries/allNotesQuery.graphql";
 
 export function useNotes() {
 	const client = getGraphQLClient();
-
-	console.log("notes query", allNotesQueryDocument);
-
 	const notesTanstackQuery = useQuery({
 		queryKey: ["notes"],
 		queryFn: async () => {

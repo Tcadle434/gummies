@@ -20,9 +20,6 @@ export function useHolders() {
 
 export function useBlogs() {
 	const client = getGraphQLClient();
-
-	console.log("blogs query", allBlogsQueryDocument);
-
 	const blogsTanstackQuery = useQuery<AllBlogsQuery>({
 		queryKey: ["blogs"],
 		queryFn: async () => {

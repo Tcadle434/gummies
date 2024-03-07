@@ -5,9 +5,6 @@ import allAnalysisQueryDocument from "@/graphql/queries/allAnalysisQuery.graphql
 
 export function useAnalysis() {
 	const client = getGraphQLClient();
-
-	console.log("analysis query", allAnalysisQueryDocument);
-
 	const analysisTanstackQuery = useQuery<AllAnalysisQuery>({
 		queryKey: ["analysis"],
 		queryFn: async () => {

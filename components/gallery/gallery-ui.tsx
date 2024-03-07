@@ -22,8 +22,6 @@ export const marketplaces = [
 
 export function DisplayGallery() {
 	const { gummiesGalaryQuery } = useGummiesGalary();
-	console.log(gummiesGalaryQuery.data);
-
 	if (gummiesGalaryQuery.isLoading) {
 		return (
 			<div className="h-screen flex items-center justify-center">

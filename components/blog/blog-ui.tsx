@@ -7,6 +7,7 @@ import { BlogCard } from "../ui/BlogCard";
 import { BlogDetails } from "../ui/BlogDetails";
 import { Blog } from "@/gql/graphql";
 import Loader from "../ui/Loader";
+import { useParams } from "next/navigation";
 
 export function DisplayBlogCard() {
 	const { publicKey } = useWallet();
@@ -90,6 +91,8 @@ export function DisplayBlogDetails({}) {
 	const { publicKey } = useWallet();
 	const { holdersQuery } = useHolders();
 	const { blogsTanstackQuery } = useBlogs();
+	const params = useParams();
+	const id: number = Number(params.id) - 1;
 
 	if (!publicKey) {
 		return (
@@ -118,8 +121,22 @@ export function DisplayBlogDetails({}) {
 		<div className="font-blinker md:ml-14 mt-20 ml-4">
 			{holdersQuery.data?.includes(publicKey?.toString()!) ? (
 				<div className="">
-					{/* map through blogsTanstackQuery.data.blogCollection.edges and for each inner node object make a blog card in a grid object */}
-					{blogsTanstackQuery.data?.blogCollection!.edges.map(
+					<BlogDetails
+						key={id}
+						id={blogsTanstackQuery.data?.blogCollection!.edges[id].node.id}
+						title={blogsTanstackQuery.data?.blogCollection!.edges[id].node.title!}
+						subtitle={
+							blogsTanstackQuery.data?.blogCollection!.edges[id].node.subtitle ?? ""
+						}
+						publishDate={
+							blogsTanstackQuery.data?.blogCollection!.edges[id].node.publishDate ??
+							""
+						}
+						content={
+							blogsTanstackQuery.data?.blogCollection!.edges[id].node.content ?? ""
+						}
+					/>
+					{/* {blogsTanstackQuery.data?.blogCollection!.edges.map(
 						({ node }: { node: Blog }, index: number) => (
 							<BlogDetails
 								key={index}
@@ -130,7 +147,7 @@ export function DisplayBlogDetails({}) {
 								content={node.content ?? ""}
 							/>
 						)
-					)}
+					)} */}
 				</div>
 			) : (
 				<div className="h-screen flex items-center justify-center text-center flex-col">

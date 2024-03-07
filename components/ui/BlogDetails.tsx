@@ -1,17 +1,10 @@
 "use client";
 
 import React from "react";
-import { useParams } from "next/navigation";
 import { Blog } from "@/gql/graphql";
 import MarkdownContent from "./MarkdownContent";
 
 export function BlogDetails({ title, subtitle, publishDate, content }: Blog) {
-	// Using useParams to access dynamic route parameters
-	const params = useParams();
-	const id = params.id;
-
-	console.log(content);
-
 	return (
 		<div className="container mx-auto flex flex-col justify-between md:px-20 lg:px-40 w-full mt-10 px-10 mb-10">
 			<h1 className="text-4xl font-bold">{title}</h1>
